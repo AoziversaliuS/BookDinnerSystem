@@ -2,12 +2,12 @@ package refer;
 
 public class User {
 
-	public static final int CUSTOMER = 0;  
-	public static final int RESTAURANT_MANAGER = 1;
-	public static final int ADMIN = 2;
+	public static final int CUSTOMER = 0;    //消费者
+	public static final int RESTAURANT_MANAGER = 1;  //餐馆老板
+	public static final int ADMIN = 2;             //运营商
 	
 	private int id;             //用户id  不能重复
-	private String name;        //用户名      不能重复
+	private String name;        //用户名       不能重复
 	private String passWord;
 	private String trueName;    //真实姓名
 	private String sex;

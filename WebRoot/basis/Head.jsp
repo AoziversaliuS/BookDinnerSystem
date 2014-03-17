@@ -71,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </ul>
         </li>
         <% }%>
-        <li id="register">
+        <li id="regist">
           <a href="<%=path %>/ziYang/register.jsp" data-description="Regist">注册</a>
           <ul>
           

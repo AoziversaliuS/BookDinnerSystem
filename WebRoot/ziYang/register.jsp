@@ -25,97 +25,140 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript"  src="/BookDinnerSystem/js/jquery.js"></script>
 <script type="text/javascript">
+
 function setHead(){
 	$("#home").removeAttr("class");
 	$("#manager").removeAttr("class");
 	$("#admin").removeAttr("class");
 	$("#login").removeAttr("class");
-	$("#register").removeAttr("class");
+	$("#regist").removeAttr("class");
 	
-	$("#register").attr("class","active");
+	$("#regist").attr("class","active");
+	
 }
 
 jQuery(function($){
 setHead();//重设html头部
 
 		var name = false;
-		var pass = false;
-		var comfirmPass = false;
-		var email = false;
+		var passWord = false;
+		var passConfig = false;
+		var realName = false;
+		var personId = false;
+		var age = false;
+		var address = false;
 		var phone = false;
+		var email = false;
 		var qq = false;
 		var re = new RegExp(/^\w\w+@\w+\.[a-zA-Z]{2,7}$/);
+		var ageRe = new RegExp(/^[0-9]{1,2}$/);
+		var personIdRe = new RegExp(/^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{4}$/);
 		$("#name,#passWord,#passConfig,#realName,#age,#personId,#address,#phone,#email,#qq").blur(function() {
 			if ($("#name").val() == "") {
 				name = false;
-				$("#nameTest").html("<font color='red'>*</font>");
+				$("#nameTest").html("*");
 			} else {
-				configName = true;
+				name = true;
 				$("#nameTest").html("");
 			}
 
 			if ($("#passWord").val() == "") {
-				pass = false;
-				$("#passWordTest").html("<font color='red'>*</font>");
+				passWord = false;
+				$("#passWordTest").html("*");
 			} else {
-				pass = true;
+				passWord = true;
 				$("#passWordTest").html("");
 			}
 
 			if ($("#passConfig").val() == "") {
-				comfirmPass = false;
-				$("#passConfigTest").html("<font color='red'>*</font>");
+				passConfig = false;
+				$("#passConfigTest").html("*");
 			} else if ($("#passConfig").val() == ($("#passWord").val())) {
-				comfirmPass = true;
+				passConfig = true;
 				$("#passConfigTest").html("");
 			} else {
-				comfirmPass = false;
-				$("#passConfigTest").html("<font color='red'>两次输入的密码不一致！</font>");
+				passConfig = false;
+				$("#passConfigTest").html("两次输入的密码不一致！");
 			}
 			
 			if ($("#realName").val() == "") {
-				name = false;
-				$("#realNameTest").html("<font color='red'>*</font>");
+				realName = false;
+				$("#realNameTest").html("*");
 			} else {
-				configName = true;
+				realName = true;
 				$("#realNameTest").html("");
 			}
 			
+			
 			if ($("#age").val() == "") {
-				name = false;
+				age = false;
 				$("#ageTest").html("<font color='red'>*</font>");
-			} else{
-				configName = true;
-				$("#realNameTest").html("");
+			} else if(ageRe.test($("#age").val())==false){
+				age = false;
+				$("#ageTest").html("请输入正确的年龄！");
+			}else{
+				age = true;
+				$("#ageTest").html("");
+			}
+			
+			if ($("#personId").val() == "") {
+				personId = false;
+				$("#personIdTest").html("<font color='red'>*</font>");
+			} else if(personIdRe.test($("#personId").val())==false){
+				personId = false;
+				$("#personIdTest").html("错误的身份证格式！");
+			}else{
+				personId = true;
+				$("#personIdTest").html("");
+			}
+			
+			if ($("#address").val() == "") {
+				address = false;
+				$("#addressTest").html("*");
+			} else {
+				address = true;
+				$("#addressTest").html("");
 			}
 
 			if (re.test($("#email").val())) {
 				email = true;
-				$("#msg4").html("<font color='green'>完成。</font>");
-			} else {
+				$("#emailTest").html("");
+			}else if($("#email").val()==""){
+			email = false;
+			$("#phoneTest").html("*");
+			} 
+			 else {
 				email = false;
-				$("#msg4").html("<font color='red'>请输入正确的Email！</font>");
+				$("#emailTest").html("请输入正确的Email！");
 			}
 
 			if (/^1[3,4,5,8][0-9]\d{8}$/.test($("#phone").val())) {
 				phone = true;
-				$("#msg5").html("<font color='green'>完成。</font>");
-			} else {
+				$("#phoneTest").html("");
+			}else if($("#phone").val()==""){
+			phone = false;
+			$("#phoneTest").html("*");
+			} 
+			else {
 				phone = false;
-				$("#msg5").html("<font color='red'>请输入正确的电话号码！</font>");
+				$("#phoneTest").html("请输入正确的手机号码！");
 			}
 
 			if (/^\d+$/.test($("#qq").val())) {
 				qq = true;
-				$("#msg6").html("<font color='green'>完成。</font>");
-			} else {
+				$("#qqTest").html("");
+			}else if($("#qq").val()==""){
 				qq = false;
-				$("#msg6").html("<font color='red'>请输入正确的qq号码！</font>");
+				$("#qqTest").html("*");
 			}
-
-			if (name && pass && comfirmPass && email && phone && qq) {
+			else {
+				qq = false;
+				$("#qqTest").html("<font color='red'>请输入正确的qq号码！</font>");
+			}
+			if (name && passWord && passConfig && realName && age && personId && address && phone && email && qq) {
 				$("#submit").removeAttr("disabled");
 			} else {
+			
 				$("#submit").attr("disabled", "disabled");
 			}
 
@@ -150,13 +193,13 @@ setHead();//重设html头部
       <ul class="clearfix">
         <li>
           <label for="name" >用户名:</label>
-          <input type="text"    value=""  id="name">
+          <input type="text"    value="" name="name" id="name">
           <font color="red" id="nameTest">*</font>
   
         </li>
         <li>
           <label for="passWord" >密码:</label>
-          <input type="password"    value="" id="passWord">
+          <input type="password"    value=""  name="passWord" id="passWord">
           <font color="red" id="passWordTest">*</font>
         </li>
         <li>
@@ -166,7 +209,7 @@ setHead();//重设html头部
         </li>
         <li>
           <label for="realName" >真实姓名:</label>
-          <input type="text"   id="realName" value="">
+          <input type="text"   id="realName" name="realName" value="">
           <font color="red" id="realNameTest">*</font>
         </li>
         <li>
@@ -178,32 +221,32 @@ setHead();//重设html头部
         </li>
         <li>
           <label for="age" >年龄:</label>
-          <input type="text"   id="age" value="" >
+          <input type="text"   id="age" name="age" value="" >
           <font color="red" id="ageTest">*</font>
         </li>
         <li>
           <label for="personId">身份证号:</label>
-          <input type="text"   id="personId" value=""  >
+          <input type="text"   id="personId"name="personId"  value=""  >
           <font color="red" id="personIdTest">*</font>
         </li>
         <li>
           <label for="address" >送餐地址:</label>
-          <input type="text"   id="address" value="" >
+          <input type="text"   id="address" name="address" value="" >
           <font color="red" id="addressTest">*</font>
         </li>
         <li>
           <label for="phone" >手机号码:</label>
-          <input type="text"  id="phone" value="" >
+          <input type="text"  id="phone" name="phone" value="" >
           <font color="red" id="phoneTest">*</font>
         </li>
         <li>
           <label for="email" >邮箱地址:</label>
-          <input type="text"   id="email" value="" >
+          <input type="text"   id="email" name="email" value="" >
           <font color="red" id="emailTest">*</font>
         </li>
         <li>
           <label for="qq" >QQ:</label>
-          <input type="text"   id="qq" value="" >
+          <input type="text"   id="qq" name="qq" value="" >
           <font color="red" id="qqTest">*</font>
         </li>
         <li>

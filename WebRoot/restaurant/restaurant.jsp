@@ -26,7 +26,7 @@ function setHead(){
 	$("#manager").removeAttr("class");
 	$("#admin").removeAttr("class");
 	$("#login").removeAttr("class");
-	$("#register").removeAttr("class");
+	$("#regist").removeAttr("class");
 	
 	$("#manager").attr("class","active");
 }
