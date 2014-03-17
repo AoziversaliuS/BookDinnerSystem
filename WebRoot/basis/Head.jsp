@@ -1,0 +1,107 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String source = path+"/source/";
+//  http://127.0.0.1:8080/BookDinnerSystem/basis/Head.jsp
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+<meta charset="utf-8">
+<title>Tasty - Recipes, Food Website and Blog Template - Responsive, Html5, CSS3, jquery </title>
+<meta name="description" content="Recipes Template, Food Template Recipes Blog Template, cooking, Food, chef, Responsive Template, html5 Template, html5, css3, jquery, responsive">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<script src="js/html5.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Noticia+Text:400,400italic,700,700italic|Crete+Round:400,400italic|Lobster|Lobster+Two:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="<%=source %>css/style.css">
+<link id="color" rel="stylesheet" href="<%=source %>css/color1.css">
+<link rel="stylesheet" type="text/css" href="<%=source %>fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+<link rel="stylesheet" href="<%=source %>css/mediaelementplayer.min.css" />
+<link href="<%=source %>colorbox/colorbox.html" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+<!--Header Part Start-->
+<header id="header" class="clearfix">
+  <div class="headerstrip"><div class="spiral"></div></div>
+  
+  <div class="container clearfix">
+    <a href="index-2.html" id="logo">
+      <img src="<%=source %>images/logo.png" alt="Tasty Delicious Recipes">
+    </a>
+    <nav id="topnav">
+      <ul>
+        <li id="home" >
+          <a  href="<%=path %>/ziYang/home.jsp" data-description="Home">主页</a>
+        </li>
+        <li id="manager">
+          <a  href="<%=path %>/restaurant/restaurant.jsp" data-description="Restaurant Manager System">餐厅管理</a>
+          <ul>
+           <li><a href="receipelist.html">餐馆信息管理</a>
+            </li>
+            <li><a href="receipegrid.html">菜单</a>
+            </li>           
+            <li><a href="receipelist2column.html">订单</a>
+            </li>
+            <li><a href="receipedetails.html">留言信息</a>
+            </li>
+           
+            <li><a href="author.html">只有餐馆账号用户登录后才能看到此后台 </a>
+            </li>
+          </ul>
+           </li>
+        <li id="admin">
+          <a href="<%=path %>/admin/admin.jsp" data-description="Admin System">运营商后台</a>
+        </li>
+        <li id="login">
+       <% 
+       String user = null;
+       /* http://127.0.0.1:8080/BookDinnerSystem/entry/b.jsp */
+       if(user == null){ %>
+           <a href="blog-list.html" data-description="Login">登录</a>
+          <ul>
+            <li><a href="blog-list.html">所有用户登录后还是返回这个界面</a>
+            </li>
+            <li><a href="blog-single-image.html">然后根据已登录的账号权限</a>
+            </li>
+            <li><a href="blog-single-slider.html">来显示相关后台</a>
+            </li>
+            
+          </ul>
+        </li>
+        <% }%>
+        <li id="register">
+          <a href="<%=path %>/ziYang/register.jsp" data-description="Regist">注册</a>
+          <ul>
+          
+          <li><a href="blog-single-slider.html">登录成功后，登录和注册选项将被隐藏，个人信息选项将会出现</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<h1 class="topcontent">欢迎光临 <span>订餐网</span></h1>
+<!--Header Part End-->
+
+<!--Javascripts-->
+<script src="js/jquery-latest.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="js/jquery.isotope.min.js"></script>
+<script src="js/mediaelement-and-player.min.js"></script>
+<script  type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="js/jquery.elastislide.js"></script>
+<script type="text/javascript" src="js/jquery.tweet.js"></script><script type="text/javascript" src="fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<script  type="text/javascript" src="js/jquery.validate.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="js/jquery.gmap.js"></script>
+<script src="js/jflickrfeed.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
+</body>
+</html>
