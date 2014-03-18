@@ -14,10 +14,15 @@ public interface UserDao {
 	public abstract  ArrayList<User> getUsers();
 	
 	//修改一个已存在的用户
-	public abstract  void setUser(String userName);
+	public abstract  void setUser(User u);
 	
 	//根据用户名拿到数据库中的相应的用户，若用户不存在，则返回null
 	public abstract  User getUser(String userName);
+	
+	//根据用户id拿到数据库中的相应的用户，若用户不存在，则返回null
+	public abstract  User getUser(int userId);
+	
+	public abstract void deleteUser(int userId);
 	
 	//实现类为 UserDaoImpl
 	

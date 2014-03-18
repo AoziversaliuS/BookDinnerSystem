@@ -9,7 +9,7 @@ public class User {
 	private int id;             //用户id  不能重复
 	private String name;        //用户名       不能重复
 	private String passWord;
-	private String trueName;    //真实姓名
+	private String realName;    //真实姓名
 	private String sex;
 	private String age;
 	private String personId;    //身份证号
@@ -28,13 +28,16 @@ public class User {
 	public User() {
 		super();
 	}
+	
+	
+	
 	public User(String name, String passWord, String trueName, String sex,
 			String age, String personId, String address, String phone,
 			String email, String qq, int role) {
 		super();
 		this.name = name;
 		this.passWord = passWord;
-		this.trueName = trueName;
+		this.realName = trueName;
 		this.sex = sex;
 		this.age = age;
 		this.personId = personId;
@@ -62,11 +65,11 @@ public class User {
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
 	}
-	public String getTrueName() {
-		return trueName;
+	public String getRealName() {
+		return realName;
 	}
-	public void setTrueName(String trueName) {
-		this.trueName = trueName;
+	public void setRealName(String trueName) {
+		this.realName = trueName;
 	}
 	public String getSex() {
 		return sex;
