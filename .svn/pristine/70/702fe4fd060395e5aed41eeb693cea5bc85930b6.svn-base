@@ -1,0 +1,8 @@
+package Message;
+
+public class ziYang {
+	//每次提交前在这里写上：这一次完成的功能，修改的文件，增加的文件。
+	
+   //user与数据库的底层链接已完成,新增 User,UserDao,UserDaoImpl
+	//user数据库接口Bug修复
+}

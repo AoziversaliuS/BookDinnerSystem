@@ -1,0 +1,5 @@
+package Message;
+
+public class ziYang {
+   //user与数据库的底层链接已完成,新增 User,UserDao,UserDaoImpl
+}

@@ -1,0 +1,79 @@
+package bean;
+
+public class Restaurant {
+
+	private int id;
+	private int foodId;
+	private String restaurantName;
+	private int managerId;     //¿œ∞Â√˚≥∆
+	private String phone;
+	private String address;
+	private String picture;
+	private String introduce;
+	private String regtime;
+	private String modifedtime;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getFoodId() {
+		return foodId;
+	}
+	public void setFoodId(int foodId) {
+		this.foodId = foodId;
+	}
+	public String getRestaurantName() {
+		return restaurantName;
+	}
+	public void setRestaurantName(String restaurantName) {
+		this.restaurantName = restaurantName;
+	}
+	public int getManagerId() {
+		return managerId;
+	}
+	public void setManagerId(int managerId) {
+		this.managerId = managerId;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getPicture() {
+		return picture;
+	}
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+	public String getIntroduce() {
+		return introduce;
+	}
+	public void setIntroduce(String introduce) {
+		this.introduce = introduce;
+	}
+	public String getRegtime() {
+		return regtime;
+	}
+	public void setRegtime(String regtime) {
+		this.regtime = regtime;
+	}
+	public String getModifedtime() {
+		return modifedtime;
+	}
+	public void setModifedtime(String modifedtime) {
+		this.modifedtime = modifedtime;
+	}
+	
+	
+	
+}

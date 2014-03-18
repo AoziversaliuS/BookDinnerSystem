@@ -1,0 +1,15 @@
+package bean;
+
+public class Restaurant {
+
+	private int id;
+	private int foodId;
+	private String name;
+//	private String bossName;
+//	private String bossName;
+//	private String bossName;
+//	private String bossName;
+//	private String bossName;
+//	private String bossName;
+//	private String bossName;
+}
