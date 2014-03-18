@@ -1,4 +1,5 @@
-package tool;
+package dao.impl;
+
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -6,16 +7,20 @@ import java.sql.SQLException;
 
 import java.util.ArrayList;
 
+import dao.UserDao;
+
 import bean.User;
 
 
 
-public class UserDB {
+public class UserDaoImpl implements UserDao {
 
+	
 	private static final String location = "localhost:3306/MySQL";
 	private static final String user = "root";
 	private static final String password = "aoziversalius";
 	
+	private static final String TABLE_NAME = "user"; 
 	
 	private static final String url = "jdbc:mysql://"+location+"?characterEncoding=utf8";
 
@@ -23,7 +28,7 @@ public class UserDB {
 	private static java.sql.Statement stmt = null;
 	private static java.sql.PreparedStatement pre = null;
 
-	private static void load() {
+	private  void load() {
 		
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
@@ -40,7 +45,7 @@ public class UserDB {
 			createTable();//若数据库中无表格，则建立表格
 
 	}
-	private static void release(){
+	private  void release(){
 		
 			try {
 				
@@ -60,10 +65,10 @@ public class UserDB {
 		
 	}
 	
-	public static void addUser(User u){
+	public  void addUser(User u){
 		
 		load();
-		String sql = "insert into webuser( User,PassWord,Email,Phone,QQ ) " +
+		String sql = "insert into "+TABLE_NAME+"( User,PassWord,Email,Phone,QQ ) " +
 		              "values(?,?,?,?,?);";
 		
 		try {
@@ -83,11 +88,11 @@ public class UserDB {
 		
 	}
 	
-	public static ArrayList<User> getUsers(){
+	public  ArrayList<User> getUsers(){
 		load();
 		ResultSet rs = null;
 		ArrayList<User> users = null;
-		rs = executeQuery("select * from webuser;");
+		rs = executeQuery("select * from "+TABLE_NAME+";");
 		if(rs != null){
 			try {
 				users = new ArrayList<User>();
@@ -112,7 +117,7 @@ public class UserDB {
 		return users;
 	}
 
-	public static User getUser(String userName){
+	public  User getUser(String userName){
 		load();
 		ArrayList<User> users = null;
 		users = getUsers();
@@ -128,11 +133,11 @@ public class UserDB {
 		return null;
 	}
 	public static void main(String[] args) {
-		UserDB.addUser(new User("Aqq11C2222222", "22", "1", "2", "3"));
-//		Sql.addUser(new User("奥茨", "22", "1", "2", "3"));
-		UserDB.getUsers();
-		UserDB.getUser("奥茨大神");
-		System.out.println(UserDB.getUser("奥茨"));
+//		UserDBImpl.addUser(new User("Aqq11C2222222", "22", "1", "2", "3"));
+////		Sql.addUser(new User("奥茨", "22", "1", "2", "3"));
+//		UserDBImpl.getUsers();
+//		UserDBImpl.getUser("奥茨大神");
+//		System.out.println(UserDBImpl.getUser("奥茨"));
 	}
 	
 	
@@ -161,22 +166,36 @@ public class UserDB {
 			}
 		}
 		if(hasTable == false){
-			execute(
-			   "create table WebUser(                        "
-			+  "      User  varchar(20) PRIMARY KEY UNIQUE,  "
-			+  "      PassWord varchar(20),                  "
-			+  "      Email varchar(20),                     "
-			+  "      Phone varchar(20),                     "
-			+  "      QQ    varchar(20)                      "
-			+  "      ) "
-			+  "ENGINE=InnoDB DEFAULT CHARSET=GBK;           "
-			);
+//			execute(
+//			   "create table "+TABLE_NAME+"(                        "
+//			+  "      User  varchar(20) PRIMARY KEY UNIQUE,  "
+//			+  "      PassWord varchar(20),                  "
+//			+  "      Email varchar(20),                     "
+//			+  "      Phone varchar(20),                     "
+//			+  "      QQ    varchar(20)                      "
+//			+  "      ) "
+//			+  "ENGINE=InnoDB DEFAULT CHARSET=GBK;           "
+//			);
+			String sql = "create table "+TABLE_NAME+"(                        "
+					+  "      User  varchar(20) PRIMARY KEY UNIQUE,  "
+					+  "      PassWord varchar(20),                  "
+					+  "      Email varchar(20),                     "
+					+  "      Phone varchar(20),                     "
+					+  "      QQ    varchar(20)                      "
+					+  "      ) "
+					+  "ENGINE=InnoDB;           ";
 	       System.out.println("用户表格已建立");
 		}
 		else{
 //			System.out.println("________________________");
 //			System.out.println("数据库中已存在webWser表格，无需再次添加。");
 		}
+	}
+	
+	
+	public void setUser(String userName) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
@@ -199,6 +218,7 @@ public class UserDB {
 		}
 		return null;
 	}
+
 	
 	
 	

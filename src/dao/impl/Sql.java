@@ -1,4 +1,4 @@
-package tool;
+package dao.impl;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
